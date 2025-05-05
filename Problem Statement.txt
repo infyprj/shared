@@ -1,0 +1,5 @@
+
+This project aims to enhance online shopping by providing interactive 3D product visualizations directly within a web browser. 
+The project will develop a web application using Angular that allows users to explore products in 3D, rotate them, zoom in on details, and view them from different angles. 
+This innovative approach will improve product perception, enhance customer engagement, and provide a more informative online shopping experience. 
+Data, including 3D models and product information, can be stored and managed using Azure cloud services.
