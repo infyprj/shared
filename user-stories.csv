@@ -1,0 +1,59 @@
+S.NO,User Stories,MoSCoW,Acceptance Criteria,,
+1,"As a User, I want to sign up for an account using my email address or social media profiles so that I can access exclusive features.",Must Have,"User can sign up with valid email or social media account.
+Validation errors are shown for incorrect inputs.
+User is redirected after successful signup.",,
+2,"As a User, I want to be redirected to the login page immediately after signing up so that I can log in to my new account and start using its features.",Must Have,"After signup, user lands on the login page.
+A success message is displayed.",,
+3,"As a User, I want to log in to my account using my credentials so that I can access my saved products and order history.",Must Have,"Login form accepts valid credentials.
+Displays error on invalid credentials.
+Redirects to dashboard after login.",,
+4,"As a Registered Customer, I want to update my account information so that I can keep my details up-to-date.",Should have,"User can view and edit personal details.
+Changes are saved to the database.",,
+5,"As a Guest User, I want to access 3D product visualizations without requiring a login so that I can easily browse products.",Must Have,3D product viewer accessible without authentication.,,
+6,"As a Guest User, I want to be prompted to sign up when I try to save a product so that I can save my favourite products or buy them if I don�t have an account.",Should Have,Attempting to save prompts login/signup modal.,,
+7,"As a Customer, I want to view products in 3D within my web browser so that I can get a better sense of their size, shape, and details.",Must Have,"The product model can be rotated smoothly in all directions (horizontal and vertical).
+Rotation is responsive to mouse or touch input.
+No significant lag or performance issues during rotation.",,
+8,"As a Customer, I want to rotate products in 3D so that I can view them from different angles.",Must Have,"User can rotate model on all axes.
+Rotation responds to mouse/touch.
+No noticeable lag.",,
+9,"As a Customer, I want to zoom in on product details so that I can see specific features more clearly.",Must Have,"Scroll/pinch zoom works.
+Zoom maintains model clarity.",,
+10,"As a Customer, I want to search a product so that I can easily find it.",Must Have,"Search bar returns relevant results.
+Shows ""No results found"" if no match.",,
+11,"As a Registered Customer, I want to save my favourite products so that I can easily access them later.",Should have,"Clicking 'save' adds product to user�s favourites.
+Success message shown.",,
+12,"As a Registered Customer, I want to leave reviews and ratings for products based on their 3D visualizations so that I can help others make informed decisions.",Could Have,"Review and rating forms are available after purchase.
+Submission updates review section.",,
+13,"As a Registered Customer, I want to view my order history and saved products so that I can track my purchases and preferences.",Should have,Order history and saved items are visible on user profile.,,
+14,"As a Customer, I want to browse products by category and sub-category using the navigation menu so that I can find items easily.",Should have,"Products grouped by category/sub-category.
+Filter changes results dynamically.",,
+15,"As a Customer, I want to filter products by category type so that I can find my desired product easily.",Should have,Category filter updates product display accordingly.,,
+16,"As a Customer, I want to filter products by price range so that I can find products within my budget.",Should have,"Price slider or input filter provided.
+Results update on range selection.",,
+17,"As a Customer, I want to use a filters button to apply multiple filters at once so that I can select all my requirements together.",Should have,"Filters can be applied in combination.
+Button updates result list accordingly.",,
+18,"As a Customer, I want to be redirected to the page with filtered products even if no filters are applied so that I can see all options in one place.",Should have,Clicking 'filter' navigates to filtered results page.,,
+19,"As a Customer, I want to remove products from my saved list so that I can manage my preferences.",Should have,'Remove' button deletes item from saved list.,,
+20,"As a Customer, I want to view feedback from other customers so that I can get better insight into the product.",Could Have,Reviews displayed on product page.,,
+21,"As a Customer, I want to rate a purchased product so that my feedback helps others.",Could Have,Rating stars available post-purchase.,,
+22,"As an Admin, I want to add new products so that customers can view the latest items.",Must Have,Admin panel allows product creation with details and 3D model upload.,,
+23,"As an Admin, I want to update product information such as quantity so that customers see accurate data.",Must Have,Editable fields for inventory in admin panel.,,
+24,"As an Admin, I want to delete unavailable products so that they don't appear to customers.",Must Have,Delete option removes product from listings.,,
+25,"As a Customer, I want access to help support so that I can report issues.",Could Have,Help/contact page with issue form.,,
+26,"As an Admin, I want to provide contact details in the help desk so that customers can reach out directly.",Could Have,Help section includes email/phone.,,
+27,"As a Customer, I want to view FAQs so that I can find quick answers.",Could Have,FAQs displayed in a collapsible format.,,
+28,"As an Admin, I want to add a text box for custom questions so that all customer queries are addressed.",Could Have,Text area under FAQ with submit button.,,
+29,"As a Customer, I want to submit customization requests so that the product suits my needs.",Could Have,Optional customization form during checkout.,,
+30,"As a Customer, I want to recheck all details before purchase so that I can verify accuracy.",Should have,Summary screen before final payment.,,
+31,"As an Admin, I want to enable editing of customer details at checkout review so that they can fix errors.",Should have,'Edit' buttons on checkout review screen.,,
+32,"As a Guest user, I want error alerts for wrong login inputs so that I can correct them.",Must Have,Inline error messages on invalid login attempts.,,
+33,"As a Customer, I want a loading animation while products load so that I know the app is working.",Could Have,Spinner or loader shown during data fetch.,,
+34,"As a Customer, I want a �No results found� message when no search results exist so that I am clearly informed.",Must Have,Message shown with no search matches.,,
+35,"As a Registered Customer, I want a confirmation after saving a product to favourites so that I know it worked.",Should have,Snackbar or modal confirmation shown.,,
+36,"As a Customer, I want a responsive layout so that the app works well on all devices.",Could Have,"Layout adjusts to mobile, tablet, desktop.",,
+37,"As a Registered Customer, I want to logout from my account so that I can end my session securely.",Must Have,Logout button clears session and redirects to login page.,,
+38,"As a Customer, I want to use a navigation bar to switch pages so that I can explore the site easily.",Must Have,"Navigation bar present with links to Home, Products, Categories, etc.",,
+39,"As a Registered Customer, I want a success message after submitting a review so that I know it was received.",Could Have,Success toast or modal shown post-submission.,,
+40,"As a Customer, I want to see the total number of filtered products so that I understand the result count.",Could Have,"Count the results shown at top of filtered list.
+Updates dynamically with filters applied.",,
