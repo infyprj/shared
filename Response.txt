@@ -130,6 +130,6 @@ S.No	User Stories	MoSCoW	Acceptance Criteria
 35	As a Registered Customer, I want a confirmation after saving a product to favourites so that I know it worked.	Should Have	- Snackbar or modal confirmation shown.
 36	As a Customer, I want a responsive layout so that the app works well on all devices.	Could Have	- Layout adjusts to mobile, tablet, desktop.
 37	As a Registered Customer, I want to logout from my account so that I can end my session securely.	Must Have	- Logout button clears session and redirects to login page.
-38	As a Customer, I want to use a navigation bar to switch pages so that I can explore the site easily.	Must Have	- Navigation bar present with links to Home, Products, Categories, etc.
+38	As a Customer, I want to use a navigation bar to switch pages so that I can explore the site easily.	Must Have	- Navigation bar present with links to Home, Favourites, Cart, Profile.
 39	As a Registered Customer, I want a success message after submitting a review so that I know it was received.	Could Have	- Success toast or modal shown post-submission.
 40	As a Customer, I want to see the total number of filtered products so that I understand the result count.
