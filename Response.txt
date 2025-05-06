@@ -98,7 +98,7 @@ S.No	User Stories	MoSCoW	Acceptance Criteria
 - Zoom maintains model clarity.
 10	As a Customer, I want to search a product so that I can easily find it.	Must Have	- Search bar returns relevant results.
 - Shows "No results found" if no match.
-11	As a Registered Customer, I want to save my favourite products so that I can easily access them later.	Should Have	- Clicking 'save' adds product to user’s wishlist.
+11	As a Registered Customer, I want to save my favourite products so that I can easily access them later.	Should Have	- Clicking 'save' adds product to user’s favourites.
 - Success message shown.
 12	As a Registered Customer, I want to leave reviews and ratings for products based on their 3D visualizations so that I can help others make informed decisions.	Could Have	- Review and rating forms are available after purchase.
 - Submission updates review section.
