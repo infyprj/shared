@@ -1,0 +1,72 @@
+This is the problem staement of the project :
+This project aims to enhance online shopping by providing interactive 3D product visualizations directly within a web browser. 
+The project will develop a web application using Angular that allows users to explore products in 3D, rotate them, zoom in on details, and view them from different angles. 
+This innovative approach will improve product perception, enhance customer engagement, and provide a more informative online shopping experience. 
+Data, including 3D models and product information, can be stored and managed using Azure cloud services.
+
+The following user stories send to the project mentor :
+S.NO	User Stories	MoSCoW
+1	      As a User, I want to sign up for an account using my email address or social media profiles so that I can access exclusive features. 	Must Have
+2	      As a User, I want to be redirected to the login page immediately after signing up so that I can log in to my new account and start using its features.	Must Have
+3	      As a User, I want to log in to my account using my credentials so that I can access my saved products and order history. 	Must Have
+4	      As a Registered Customer, I want to update my account information so that I can keep my details up-to-date.	Should have
+5	      As a Guest User, I want to access 3D product visualizations without requiring a login so that I can easily browse products.	Must Have
+6	      As a Guest User, I want to be prompted to sign up when I try to save a product so that I can save my favourite products or buy them if I don’t have an account.	Should Have
+7	      As a Customer, I want to view products in 3D within my web browser so that I can get a better sense of their size, shape, and details.	Must Have
+8	As a Customer, I want to rotate products in 3D so that I can view them from different angles.	Must Have
+9	As a Customer, I want to zoom in on product details so that I can see specific features more clearly.	Must Have
+10	As a Customer, I want to search a product so that I can easily find it.	Must Have
+11	As a Registered Customer, I want to save my favourite products so that I can easily access them later.	Should have
+12	As a Registered Customer, I want to leave reviews and ratings for products based on their 3D visualizations so that I can help others make informed decisions.	Could Have
+13	As a Registered Customer, I want to view my order history and saved products so that I can track my purchases and preferences.	Should have
+14	As a Customer, I want to view different categories of the products so that I don’t need to go to other application for other product category.	Should have
+15	As a Customer, I want to be able to select the type of the product category so that it will be easy for me to find the desired product.	Should have
+16	As a Customer, I want to be able to select the price range so that I can find the products easily which are in my budget.	Should have
+17	As a Customer, I want to select all the above filters if I want using a filters button so that I can select all my required features at one go.	Should have
+18	As a Customer, I want to be redirected to the page containing the filtered products if I applied or not applied any filters so that all the desired products will be at one place.	Should have
+19	As a Customer, I want to be able remove products from my saved list so that if I bought that product or lost my interest in that product it would not be present in my saved list.	Should have
+20	As a Customer, I want to be able to view the others feedback about the product I am viewing so that I get better idea of that product.	Could Have
+21	       As a Customer, I want to be able to rate the product I bought so that even If I did not give feedback of the product, the rating may help other customers.	Could Have
+22	As an Admin, I want to be able to add the products into the page so that the customers can view the latest products also.	Must Have
+23	As an Admin, I want to be able to update the product information like changing the quantity available of the product so that the customers can view how many pieces of products are available.	Must Have
+24	As an Admin, I want to be able to delete the products from the list so that the product which is unavailable cannot be viewed by the customer.	Must Have
+25	As a Customer, I want to have a help support in the application so that If I was facing any issue I can address the issue there.	Could Have
+26	As an admin, I want to provide the application owners contact information in the help desk so that the customers can easily contact the owners.	Could Have
+27	As a Customer, I want to view the most frequently asked questions and answers about the product so that many doubts of mine can be cleared.	Could Have
+28	As an Admin, I want to provide a text area for the customers if they have any question which is not provided in the question and answers so that their queries can also be answered.	Could Have
+29	As a Customer, I want to be able to provide my own customisations about the product so that I can get satisfied by the end product.	Could Have
+30	As a Customer, I want to be able to recheck all my details and the product details after I proceed to buy so that I can ensure no mistakes in the details.	Should have
+31	As an Admin, I want to provide an edit option to the customer when they check their details after proceeded to buy so that they can update their details then and there.	Should have
+32	As a Guest user, I want to see an alert message when I entered any wrong credentials while login so that I can rectify the mistakes.	Must Have
+33	As a Customer, I want to view a basic loading animation when products are being fetched so that I know the application is working.	Could Have
+34	As a Customer, I want to view a “No results found” message when my search returns no products so that I am clearly informed.	Must Have
+35	As a Registered Customer, I want to see a conformation message after successfully saving a product to my favourites so that I know my action was successful.	Should have
+36	As a Customer, I want to see a responsive layout so that the application works well on both desktop and mobile devices.	Could Have
+37	As a Registered Customer, I want to logout from my account so that I can securely end my session.	Must Have
+38	As a Customer, I want to navigate between pages using a navigation bar so that I can easily access different sections of the site.	Must Have
+39	As a Registered Customer, I want to see a success message after submitting a product review so that I know it was recorded.	Could Have
+40	       As a Customer, I want to see the total number of filtered products displayed so that I understand how many items match my search or filters.	Could Have
+
+
+And the project mentor replied back for this user stories as follows :
+Went through the user stories,
+1.Some stories are quite broad. For example: 
+•	"As a Customer, I want to view different categories of the products so that I don't need to go to other application for other product category." Could be broken down into more specific actions like browsing by category, sub-category, or using a navigation menu.
+•	"As a Customer, I want to be able to see the price range so that I can find the products easily which are in my budget." Could include details like filtering by price range or seeing the price clearly displayed.
+2.Some stories might have implicit assumptions that need to be made explicit. For example, how will the 3D models be loaded? What are the performance expectations?
+3.Ensure all "Must Have" stories are absolutely essential for the initial viable product with 3D viewing.
+4. For each user story, define clear and measurable acceptance criteria. This will help the development team understand when a story is complete and working correctly. For example, for story #7 ("As a Customer, I want to rotate products in 3D so that I can see them from different angles."), acceptance criteria could include: 
+•	The product model can be rotated smoothly in all directions (horizontal and vertical).
+•	Rotation is responsive to mouse or touch input.
+•	No significant lag or performance issues during rotation.
+Add one more column in excel sheet as Acceptance crietria.
+
+
+Do the changes and be clear who is going to do which user stories. we can meet by 12pm.
+
+Regards
+Deepa
+
+
+
+By following the instructions given by project mentor, make the changes in the user stories and add acceptance criteria for each user story. Give the table as as response.
