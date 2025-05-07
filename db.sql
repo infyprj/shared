@@ -142,6 +142,19 @@ CREATE TABLE Orders (
     Notes NVARCHAR(MAX)
 );
 GO
+    INSERT INTO Orders (UserID, TotalAmount, ShippingAddress, ShippingCity, ShippingState, ShippingPostalCode, ShippingCountry)
+VALUES 
+(1, 150.75, '123 Main St', 'New York', 'NY', '10001', 'USA'),
+(2, 299.99, '456 Oak Ave', 'Los Angeles', 'CA', '90001', 'USA'),
+(3, 89.50, '789 Pine Rd', 'Chicago', 'IL', '60601', 'USA'),
+(4, 420.00, '101 Maple Blvd', 'Houston', 'TX', '77001', 'USA'),
+(5, 59.95, '202 Birch Ln', 'Phoenix', 'AZ', '85001', 'USA'),
+(1, 230.25, '123 Main St', 'New York', 'NY', '10001', 'USA'),
+(2, 199.99, '456 Oak Ave', 'Los Angeles', 'CA', '90001', 'USA'),
+(3, 320.10, '789 Pine Rd', 'Chicago', 'IL', '60601', 'USA'),
+(4, 150.00, '101 Maple Blvd', 'Houston', 'TX', '77001', 'USA'),
+(5, 75.00, '202 Birch Ln', 'Phoenix', 'AZ', '85001', 'USA');
+
 
 -- Create index for user's order history
 CREATE INDEX IX_Orders_UserID ON Orders(UserID);
