@@ -194,6 +194,18 @@ CREATE TABLE OrderItems (
     CustomizationDetails NVARCHAR(MAX)
 );
 GO
+    INSERT INTO OrderItems (OrderID, ProductID, Quantity, UnitPrice, CustomizationDetails)
+VALUES
+(1, 2, 1, 49.99, 'Color: Red, Size: M'),
+(1, 3, 2, 29.95, NULL),
+(2, 5, 1, 99.00, 'Engraving: "Happy B-Day"'),
+(2, 1, 3, 19.99, NULL),
+(3, 6, 2, 45.50, 'Packaging: Gift wrap'),
+(3, 7, 1, 89.99, NULL),
+(4, 4, 5, 9.99, NULL),
+(4, 8, 2, 39.95, 'Color: Black'),
+(5, 9, 1, 120.00, NULL),
+(5, 10, 1, 75.00, 'Material: Organic Cotton');
 
 -- Create index for faster order item retrieval
 CREATE INDEX IX_OrderItems_OrderID ON OrderItems(OrderID);
