@@ -169,3 +169,20 @@ VALUES
 GO
 
 
+
+
+
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY IDENTITY(101,1),
+    Name NVARCHAR(255) NOT NULL,
+    Description NVARCHAR(MAX),
+    Price DECIMAL(18, 2) NOT NULL,
+    CategoryID INT NOT NULL FOREIGN KEY REFERENCES Categories(CategoryID),
+    ModelURL NVARCHAR(255) NOT NULL, -- URL to 3D model file
+    ThumbnailURL NVARCHAR(255),
+    Quantity INT DEFAULT 0,
+);
+GO
+
+
+
