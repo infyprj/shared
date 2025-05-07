@@ -3,8 +3,11 @@ GO
 
 USE Shop3D;
 GO
+--
 
-
+IF OBJECT_ID('Surgery') IS NOT NULL
+	DROP TABLE Surgery
+GO
 
 --SavedProducts table
 CREATE TABLE SavedProducts (
