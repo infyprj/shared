@@ -50,7 +50,7 @@ CREATE TABLE Categories (
 );
 GO
 
-INSERT INTO Categories (Name, Description, ParentCategoryID, ImageURL)
+INSERT INTO Categories (Name)
 VALUES
 ('Sofa'),
 ('Dining Table'),
