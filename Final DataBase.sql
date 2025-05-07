@@ -3,10 +3,38 @@ GO
 
 USE Shop3D;
 GO
---
+-- SavedProducts   Orders  OrderItems   Roles  Users   Categories   ProductImages   Products 
 
-IF OBJECT_ID('Surgery') IS NOT NULL
-	DROP TABLE Surgery
+IF OBJECT_ID('SavedProducts') IS NOT NULL
+	DROP TABLE SavedProducts
+GO
+
+IF OBJECT_ID('Orders') IS NOT NULL
+	DROP TABLE Orders
+GO
+
+IF OBJECT_ID('OrderItems') IS NOT NULL
+	DROP TABLE OrderItems
+GO
+
+IF OBJECT_ID('Roles') IS NOT NULL
+	DROP TABLE Roles
+GO
+
+IF OBJECT_ID('Users') IS NOT NULL
+	DROP TABLE Users
+GO
+
+IF OBJECT_ID('Categories') IS NOT NULL
+	DROP TABLE Categories
+GO
+
+IF OBJECT_ID('ProductImages') IS NOT NULL
+	DROP TABLE ProductImages
+GO
+
+IF OBJECT_ID('Products') IS NOT NULL
+	DROP TABLE Products
 GO
 
 --SavedProducts table
@@ -188,36 +216,3 @@ VALUES
 
 ('Sofa2', 'Sofa for 5 members', 39.99, 1,
  'https://example.com/models/gamingmouse.glb', 'https://example.com/images/gamingmouse.jpg', 100);
-
-
-
-
-
-CREATE PROCEDURE sp_RegisterUser
-    @Email NVARCHAR(255),
-    @PasswordHash NVARCHAR(255),
-    @FirstName NVARCHAR(100),
-    @LastName NVARCHAR(100),
-    @PhoneNumber NVARCHAR(20) = NULL,
-AS
-BEGIN
-    -- Check if email already exists
-    IF EXISTS (SELECT 1 FROM Users WHERE Email = @Email)
-    BEGIN
-        RETURN -1; -- Email already exists
-    END
-    
-    -- Insert new user
-    INSERT INTO Users (
-        Email, PasswordHash, FirstName, LastName, PhoneNumber,
-        RoleID
-    )
-    VALUES (
-        @Email, @PasswordHash, @FirstName, @LastName, @PhoneNumber,
-        2, -- Default role ID for Customer
-        @IsSocialLogin, @SocialProvider, @SocialProviderID
-    );
-    
-    RETURN SCOPE_IDENTITY();
-END;
-GO
