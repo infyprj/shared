@@ -70,3 +70,50 @@ Deepa
 
 
 By following the instructions given by project mentor, make the changes in the user stories and add acceptance criteria for each user story. Give the table as as response.
+
+
+
+
+
+
+
+
+
+
+Here's a step-by-step guide to storing 3D images in Azure Blob Storage:
+
+Step 1: Create an Azure Storage Account
+1. Log in to the Azure portal (https://portal.azure.com/).
+2. Click on "Create a resource" and search for "Storage account".
+3. Click on "Storage account" and then "Create".
+4. Fill in the required details, such as subscription, resource group, storage account name, and location.
+5. Choose the performance and redundancy options that suit your needs.
+6. Click "Review + create" and then "Create" to create the storage account.
+
+Step 2: Create a Container in Azure Blob Storage
+1. Navigate to your storage account in the Azure portal.
+2. Click on "Containers" under the "Blob service" section.
+3. Click on "+ Container" to create a new container.
+4. Enter a name for the container and choose the public access level.
+5. Click "Create" to create the container.
+
+Step 3: Upload 3D Images to Azure Blob Storage
+1. Navigate to your container in the Azure portal.
+2. Click on "Upload" to upload your 3D images.
+3. Select the files you want to upload and choose the blob type (Block blob).
+4. Click "Upload" to upload the files.
+
+Step 4: Get the URL of the 3D Image
+1. Navigate to the uploaded 3D image in the Azure portal.
+2. Click on the three dots next to the file name and select "Properties".
+3. The URL of the 3D image will be displayed in the "URL" field.
+
+Alternative Method: Using Azure Storage Explorer
+1. Download and install Azure Storage Explorer.
+2. Connect to your Azure storage account using the explorer.
+3. Navigate to your container and upload files using the explorer.
+
+Alternative Method: Using Azure CLI or SDKs
+1. Use the Azure CLI or SDKs (e.g., Azure Storage SDK for .NET) to upload files to Azure Blob Storage programmatically.
+
+By following these steps, you can store your 3D images in Azure Blob Storage and access them using the URLs.
