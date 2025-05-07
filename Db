@@ -1,7 +1,15 @@
-CREATE TABLE Roles (
-    RoleID INT PRIMARY KEY IDENTITY(1,1),
-    RoleName NVARCHAR(50) NOT NULL UNIQUE
-);
+INSERT INTO Roles (RoleName)
+VALUES 
+('Administrator'),
+('Manager'),
+('Editor' ),
+('Viewer'),
+('Support'),
+('HR'),
+('Finance'),
+('Developer'),
+('QA Tester'),
+('Guest');
 GO
 
 INSERT INTO Users (Email, PasswordHash, FirstName, LastName, PhoneNumber, Address, City, State, PostalCode, Country, RoleID)
