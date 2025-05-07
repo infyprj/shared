@@ -90,5 +90,32 @@ VALUES
 GO
 
 
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY IDENTITY(1,1),
+    Email NVARCHAR(255) NOT NULL UNIQUE,
+    PasswordHash NVARCHAR(255) NOT NULL,
+    FirstName NVARCHAR(100),
+    LastName NVARCHAR(100),
+    PhoneNumber NVARCHAR(20),
+    Address NVARCHAR(255),
+    City NVARCHAR(100),
+    State NVARCHAR(100),
+    PostalCode NVARCHAR(20),
+    Country NVARCHAR(100),
+    RoleID INT NOT NULL FOREIGN KEY REFERENCES Roles(RoleID)
+);
+GO
+
+
+
+-- Categories Table
+CREATE TABLE Categories (
+    CategoryID INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(100) NOT NULL,
+    Description NVARCHAR(500),
+    ParentCategoryID INT FOREIGN KEY REFERENCES Categories(CategoryID),
+    ImageURL NVARCHAR(255),
+);
+GO
 
 
