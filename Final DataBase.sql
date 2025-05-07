@@ -1,7 +1,7 @@
-CREATE DATABASE ECommerce3D;
+CREATE DATABASE Shop3D;
 GO
 
-USE ECommerce3D;
+USE Shop3D;
 GO
 
 
@@ -189,3 +189,32 @@ VALUES
 
 
 
+
+CREATE PROCEDURE sp_RegisterUser
+    @Email NVARCHAR(255),
+    @PasswordHash NVARCHAR(255),
+    @FirstName NVARCHAR(100),
+    @LastName NVARCHAR(100),
+    @PhoneNumber NVARCHAR(20) = NULL,
+AS
+BEGIN
+    -- Check if email already exists
+    IF EXISTS (SELECT 1 FROM Users WHERE Email = @Email)
+    BEGIN
+        RETURN -1; -- Email already exists
+    END
+    
+    -- Insert new user
+    INSERT INTO Users (
+        Email, PasswordHash, FirstName, LastName, PhoneNumber,
+        RoleID
+    )
+    VALUES (
+        @Email, @PasswordHash, @FirstName, @LastName, @PhoneNumber,
+        2, -- Default role ID for Customer
+        @IsSocialLogin, @SocialProvider, @SocialProviderID
+    );
+    
+    RETURN SCOPE_IDENTITY();
+END;
+GO
