@@ -176,19 +176,20 @@ VALUES
 (1, 2, 1, 49.99, 'Color: Red, Size: M'),
 (3, 3, 2, 29.95, NULL),
 (2, 5, 1, 99.00, 'Engraving: "Happy B-Day"'),
-(2, 1, 3, 19.99, NULL),
+(2, 1, 3, 19.99, NULL);
 
 
 	
---SavedProducts table
+
 CREATE TABLE SavedProducts (
     SavedProductID INT PRIMARY KEY IDENTITY(1,1),
     UserID INT NOT NULL FOREIGN KEY REFERENCES Users(UserID) ON DELETE CASCADE,
-    ProductID INT NOT NULL FOREIGN KEY REFERENCES Products(ProductID) ON DELETE CASCADE,
+    ProductID INT NOT NULL FOREIGN KEY REFERENCES Products(ProductID) ON DELETE CASCADE
 
 );
 GO
-    INSERT INTO SavedProducts (UserID, ProductID)
+
+INSERT INTO SavedProducts (UserID, ProductID)
 VALUES
 (1, 2),
 (1, 4),
@@ -218,9 +219,3 @@ VALUES
 (5, 'https://example.com/images/product5_img1.jpg'),
 (5, 'https://example.com/images/product5_img2.jpg');
 GO
-
-
-
-
-
-
