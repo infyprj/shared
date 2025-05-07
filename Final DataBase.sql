@@ -11,17 +11,9 @@ GO
 -- order items
 -- saved products
 -- product images
-
-IF OBJECT_ID('SavedProducts') IS NOT NULL
-	DROP TABLE SavedProducts
-GO
-
-IF OBJECT_ID('Orders') IS NOT NULL
-	DROP TABLE Orders
-GO
-
-IF OBJECT_ID('OrderItems') IS NOT NULL
-	DROP TABLE OrderItems
+	
+IF OBJECT_ID('Categories') IS NOT NULL
+	DROP TABLE Categories
 GO
 
 IF OBJECT_ID('Roles') IS NOT NULL
@@ -32,18 +24,25 @@ IF OBJECT_ID('Users') IS NOT NULL
 	DROP TABLE Users
 GO
 
-IF OBJECT_ID('Categories') IS NOT NULL
-	DROP TABLE Categories
+IF OBJECT_ID('Products') IS NOT NULL
+	DROP TABLE Products
+GO
+
+IF OBJECT_ID('Orders') IS NOT NULL
+	DROP TABLE Orders
+GO
+
+IF OBJECT_ID('OrderItems') IS NOT NULL
+	DROP TABLE OrderItems
+GO
+
+IF OBJECT_ID('SavedProducts') IS NOT NULL
+	DROP TABLE SavedProducts
 GO
 
 IF OBJECT_ID('ProductImages') IS NOT NULL
 	DROP TABLE ProductImages
 GO
-
-IF OBJECT_ID('Products') IS NOT NULL
-	DROP TABLE Products
-GO
-
 
 CREATE TABLE Categories (
     CategoryID INT PRIMARY KEY IDENTITY(1,1),
