@@ -32,4 +32,16 @@ VALUES
 ('Fiction', 'Fictional books and novels', 9, 'https://example.com/images/fiction.jpg');
 GO
 
-
+INSERT INTO ProductImages (ProductID, ImageURL)
+VALUES
+(1, 'https://example.com/images/product1_img1.jpg'),
+(1, 'https://example.com/images/product1_img2.jpg'),
+(2, 'https://example.com/images/product2_img1.jpg'),
+(2, 'https://example.com/images/product2_img2.jpg'),
+(3, 'https://example.com/images/product3_img1.jpg'),
+(3, 'https://example.com/images/product3_img2.jpg'),
+(4, 'https://example.com/images/product4_img1.jpg'),
+(4, 'https://example.com/images/product4_img2.jpg'),
+(5, 'https://example.com/images/product5_img1.jpg'),
+(5, 'https://example.com/images/product5_img2.jpg');
+GO
