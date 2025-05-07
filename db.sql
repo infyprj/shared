@@ -132,10 +132,21 @@ CREATE TABLE SavedProducts (
     SavedProductID INT PRIMARY KEY IDENTITY(1,1),
     UserID INT NOT NULL FOREIGN KEY REFERENCES Users(UserID) ON DELETE CASCADE,
     ProductID INT NOT NULL FOREIGN KEY REFERENCES Products(ProductID) ON DELETE CASCADE,
-    CreatedAt DATETIME DEFAULT GETDATE(),
-    CONSTRAINT UQ_SavedProducts_UserProduct UNIQUE (UserID, ProductID)
+
 );
 GO
+    INSERT INTO SavedProducts (UserID, ProductID)
+VALUES
+(1, 2),
+(1, 4),
+(2, 1),
+(2, 5),
+(3, 3),
+(3, 6),
+(4, 7),
+(4, 8),
+(5, 9),
+(5, 10);
 
 -- Create index for faster retrieval of user's saved products
 CREATE INDEX IX_SavedProducts_UserID ON SavedProducts(UserID);
@@ -152,11 +163,7 @@ CREATE TABLE Orders (
     ShippingState NVARCHAR(100),
     ShippingPostalCode NVARCHAR(20),
     ShippingCountry NVARCHAR(100),
-    PaymentMethod NVARCHAR(50),
-    PaymentStatus NVARCHAR(50) DEFAULT 'Pending',
-    OrderStatus NVARCHAR(50) DEFAULT 'Processing',
-    TrackingNumber NVARCHAR(100),
-    Notes NVARCHAR(MAX)
+
 );
 GO
     INSERT INTO Orders (UserID, TotalAmount, ShippingAddress, ShippingCity, ShippingState, ShippingPostalCode, ShippingCountry)
