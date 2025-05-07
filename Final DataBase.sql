@@ -72,10 +72,23 @@ VALUES
 CREATE TABLE Roles (
     RoleID INT PRIMARY KEY IDENTITY(1,1),
     RoleName NVARCHAR(50) NOT NULL UNIQUE,
-    Description NVARCHAR(255),
-    CreatedAt DATETIME DEFAULT GETDATE(),
-    UpdatedAt DATETIME DEFAULT GETDATE()
 );
 GO
+
+INSERT INTO Roles (RoleName)
+VALUES 
+('Administrator'),
+('Manager'),
+('Editor' ),
+('Viewer'),
+('Support'),
+('HR'),
+('Finance'),
+('Developer'),
+('QA Tester'),
+('Guest');
+GO
+
+
 
 
