@@ -185,4 +185,23 @@ CREATE TABLE Products (
 GO
 
 
+INSERT INTO Products (Name, Description, Price, CategoryID, ModelURL, ThumbnailURL, Quantity)
+VALUES 
+('Wireless Headphones', 'Noise-cancelling over-ear headphones with 40-hour battery life.', 129.99, 1,
+ 'https://example.com/models/headphones.glb', 'https://example.com/images/headphones.jpg', 50),
+
+('Smartwatch X200', 'Feature-rich smartwatch with fitness tracking and AMOLED display.', 199.49, 2,
+ 'https://example.com/models/smartwatch.glb', 'https://example.com/images/smartwatch.jpg', 35),
+
+('4K Action Camera', 'Waterproof 4K UHD action camera with image stabilization.', 249.99, 3,
+ 'https://example.com/models/actioncamera.glb', 'https://example.com/images/actioncamera.jpg', 20),
+
+('Bluetooth Speaker', 'Portable Bluetooth speaker with deep bass and LED lights.', 59.99, 4,
+ 'https://example.com/models/speaker.glb', 'https://example.com/images/speaker.jpg', 75),
+
+('Gaming Mouse Pro', 'Ergonomic RGB gaming mouse with customizable DPI settings.', 39.99, 5,
+ 'https://example.com/models/gamingmouse.glb', 'https://example.com/images/gamingmouse.jpg', 100);
+
+
+
 
