@@ -21,7 +21,24 @@ VALUES
 ('Admin', 'System administrator with full access'),
 ('Customer', 'Regular customer account'),
 ('Guest', 'Unauthenticated user');
+Go
+
+
+INSERT INTO Roles (RoleName, Description)
+VALUES 
+('Administrator', 'Has full access to all system features and settings.'),
+('Manager', 'Oversees operations and manages user activities.'),
+('Editor', 'Can edit content but has limited access to settings.'),
+('Viewer', 'Read-only access to view system data.'),
+('Support', 'Handles support tickets and user queries.'),
+('HR', 'Manages employee records and HR tasks.'),
+('Finance', 'Access to financial data and reporting tools.'),
+('Developer', 'Works on application development and maintenance.'),
+('QA Tester', 'Responsible for testing and quality assurance.'),
+('Guest', 'Temporary access with minimal permissions.');
 GO
+
+
 
 -- Users Table
 CREATE TABLE Users (
