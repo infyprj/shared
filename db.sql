@@ -23,21 +23,19 @@ VALUES
 ('Guest', 'Unauthenticated user');
 Go
 
-
-INSERT INTO Roles (RoleName, Description)
-VALUES 
-('Administrator', 'Has full access to all system features and settings.'),
-('Manager', 'Oversees operations and manages user activities.'),
-('Editor', 'Can edit content but has limited access to settings.'),
-('Viewer', 'Read-only access to view system data.'),
-('Support', 'Handles support tickets and user queries.'),
-('HR', 'Manages employee records and HR tasks.'),
-('Finance', 'Access to financial data and reporting tools.'),
-('Developer', 'Works on application development and maintenance.'),
-('QA Tester', 'Responsible for testing and quality assurance.'),
-('Guest', 'Temporary access with minimal permissions.');
+INSERT INTO Roles (RoleName)
+VALUES
+('Administrator'),
+('Manager'),
+('Editor'),
+('Viewer'),
+('Support'),
+('HR'),
+('Finance'),
+('Developer'),
+('QA Tester'),
+('Guest');
 GO
-
 
 
 -- Users Table
@@ -64,6 +62,22 @@ CREATE TABLE Users (
     IsActive BIT DEFAULT 1
 );
 GO
+
+
+INSERT INTO Users (Email, PasswordHash, FirstName, LastName, PhoneNumber, Address, City, State, PostalCode, Country, RoleID)
+VALUES 
+('admin@example.com', 'hashed_pw_1', 'Alice', 'Admin', '1234567890', '123 Admin St', 'New York', 'NY', '10001', 'USA', 1),
+('manager@example.com', 'hashed_pw_2', 'Bob', 'Manager', '2345678901', '456 Manager Ave', 'Los Angeles', 'CA', '90001', 'USA', 2),
+('editor@example.com', 'hashed_pw_3', 'Charlie', 'Editor', '3456789012', '789 Editor Blvd', 'Chicago', 'IL', '60601', 'USA', 3),
+('viewer@example.com', 'hashed_pw_4', 'Diana', 'Viewer', '4567890123', '101 Viewer Rd', 'Houston', 'TX', '77001', 'USA', 4),
+('support@example.com', 'hashed_pw_5', 'Ethan', 'Support', '5678901234', '202 Support Ln', 'Phoenix', 'AZ', '85001', 'USA', 5),
+('hr@example.com', 'hashed_pw_6', 'Fiona', 'HR', '6789012345', '303 HR Pkwy', 'Philadelphia', 'PA', '19101', 'USA', 6),
+('finance@example.com', 'hashed_pw_7', 'George', 'Finance', '7890123456', '404 Finance Way', 'San Antonio', 'TX', '78201', 'USA', 7),
+('dev@example.com', 'hashed_pw_8', 'Hannah', 'Developer', '8901234567', '505 Dev Cir', 'San Diego', 'CA', '92101', 'USA', 8),
+('qa@example.com', 'hashed_pw_9', 'Ivan', 'Tester', '9012345678', '606 QA Dr', 'Dallas', 'TX', '75201', 'USA', 9),
+('guest@example.com', 'hashed_pw_10', 'Judy', 'Guest', '0123456789', '707 Guest Pl', 'San Jose', 'CA', '95101', 'USA', 10);
+GO
+
 
 -- Create index on Email for faster login
 CREATE INDEX IX_Users_Email ON Users(Email);
