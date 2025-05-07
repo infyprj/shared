@@ -1,3 +1,11 @@
+CREATE DATABASE ECommerce3D;
+GO
+
+USE ECommerce3D;
+GO
+
+
+
 --SavedProducts table
 CREATE TABLE SavedProducts (
     SavedProductID INT PRIMARY KEY IDENTITY(1,1),
