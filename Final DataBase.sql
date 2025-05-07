@@ -68,3 +68,14 @@ VALUES
 (4, 8, 2, 39.95, 'Color: Black'),
 (5, 9, 1, 120.00, NULL),
 (5, 10, 1, 75.00, 'Material: Organic Cotton');
+
+CREATE TABLE Roles (
+    RoleID INT PRIMARY KEY IDENTITY(1,1),
+    RoleName NVARCHAR(50) NOT NULL UNIQUE,
+    Description NVARCHAR(255),
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    UpdatedAt DATETIME DEFAULT GETDATE()
+);
+GO
+
+
