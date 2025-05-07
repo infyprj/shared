@@ -147,6 +147,13 @@ VALUES
 GO
 
 
+CREATE TABLE ProductImages (
+    ImageID INT PRIMARY KEY IDENTITY(1,1),
+    ProductID INT NOT NULL FOREIGN KEY REFERENCES Products(ProductID) ON DELETE CASCADE,
+    ImageURL NVARCHAR(255) NOT NULL,
+);
+GO
+    
 INSERT INTO ProductImages (ProductID, ImageURL)
 VALUES
 (1, 'https://example.com/images/product1_img1.jpg'),
