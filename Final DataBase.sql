@@ -219,3 +219,148 @@ VALUES
 (5, 'https://example.com/images/product5_img1.jpg'),
 (5, 'https://example.com/images/product5_img2.jpg');
 GO
+
+
+
+CREATE OR ALTER PROCEDURE sp_SearchProducts
+    @SearchTerm NVARCHAR(255)
+AS
+BEGIN
+    SELECT p.*, c.Name AS CategoryName
+    FROM Products p
+    JOIN Categories c ON p.CategoryID = c.CategoryID
+    WHERE p.Name LIKE '%' + @SearchTerm + '%' 
+       OR p.Description LIKE '%' + @SearchTerm + '%'
+       OR c.Name LIKE '%' + @SearchTerm + '%';
+END
+GO
+
+
+CREATE PROCEDURE sp_RegisterUser
+    @Email NVARCHAR(255),
+    @PasswordHash NVARCHAR(255),
+    @FirstName NVARCHAR(100),
+    @LastName NVARCHAR(100),
+    @PhoneNumber NVARCHAR(20),
+    @Address NVARCHAR(255),
+    @City NVARCHAR(100),
+    @State NVARCHAR(100),
+    @PostalCode NVARCHAR(20),
+    @Country NVARCHAR(100),
+    @RoleID INT
+AS
+BEGIN
+    -- Check if email already exists
+    IF EXISTS (SELECT 1 FROM Users WHERE Email = @Email)
+    BEGIN
+        RETURN -1; -- Email already exists
+    END
+    -- Insert new user
+    INSERT INTO Users (Email, PasswordHash, FirstName, LastName, PhoneNumber, Address, City, State, PostalCode, Country, RoleID)
+    VALUES (@Email, @PasswordHash, @FirstName, @LastName, @PhoneNumber, @Address, @City, @State, @PostalCode, @Country, @RoleID);
+    
+    RETURN 1;
+END;
+GO
+
+
+CREATE PROCEDURE sp_RemoveSavedProduct
+    @UserID INT,
+    @ProductID INT
+AS
+BEGIN
+    DELETE FROM SavedProducts 
+    WHERE UserID = @UserID AND ProductID = @ProductID;
+    
+    RETURN @@RowCount; -- Returns number of rows affected
+END;
+GO
+
+CREATE PROCEDURE sp_AddProduct
+    @Name NVARCHAR(255),
+    @Description NVARCHAR(MAX),
+    @Price DECIMAL(18, 2),
+    @CategoryID INT,
+    @ModelURL NVARCHAR(255),
+    @ThumbnailURL NVARCHAR(255) = NULL,
+    @Quantity INT
+AS
+BEGIN
+    INSERT INTO Products (
+        Name, Description, Price, CategoryID, 
+        ModelURL, ThumbnailURL, Quantity
+    )
+    VALUES (
+        @Name, @Description, @Price, @CategoryID,
+        @ModelURL, @ThumbnailURL, @Quantity
+    );
+    
+    RETURN 1;
+END;
+GO
+
+
+
+CREATE PROCEDURE sp_SaveProduct
+    @UserID INT,
+    @ProductID INT
+AS
+BEGIN
+    -- Check if already saved
+    IF NOT EXISTS (SELECT 1 FROM SavedProducts WHERE UserID = @UserID AND ProductID = @ProductID)
+    BEGIN
+        INSERT INTO SavedProducts (UserID, ProductID)
+        VALUES (@UserID, @ProductID);
+        RETURN 1; -- Success
+    END
+    ELSE
+    BEGIN
+        RETURN 0; -- Already saved
+    END
+END;
+GO
+
+
+
+CREATE OR ALTER PROCEDURE sp_AuthenticateUser
+    @Email NVARCHAR(255),
+    @PasswordHash NVARCHAR(255)
+AS
+BEGIN
+    SELECT u.*, r.RoleName
+    FROM Users u
+    JOIN Roles r ON u.RoleID = r.RoleID
+    WHERE u.Email = @Email AND u.PasswordHash = @PasswordHash;
+END
+GO
+
+
+CREATE OR ALTER PROCEDURE sp_UpdateUserDetails
+    @UserID INT,
+    @FirstName NVARCHAR(100),
+    @LastName NVARCHAR(100),
+    @PhoneNumber NVARCHAR(20),
+    @Address NVARCHAR(255),
+    @City NVARCHAR(100),
+    @State NVARCHAR(100),
+    @PostalCode NVARCHAR(20),
+    @Country NVARCHAR(100)
+AS
+BEGIN
+    UPDATE Users
+    SET FirstName = @FirstName,
+        LastName = @LastName,
+        PhoneNumber = @PhoneNumber,
+        Address = @Address,
+        City = @City,
+        State = @State,
+        PostalCode = @PostalCode,
+        Country = @Country
+    WHERE UserID = @UserID;
+    
+    SELECT @@ROWCOUNT AS RecordsUpdated;
+END
+GO
+
+
+
