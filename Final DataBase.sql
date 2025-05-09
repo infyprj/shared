@@ -53,9 +53,9 @@ GO
 INSERT INTO Categories (Name)
 VALUES
 ('Sofa'),
-('Dining Table'),
+('Table'),
 ('Bed'),
-('Flower Vase');
+('Chair');
 GO
 
 
@@ -119,20 +119,25 @@ GO
 
 INSERT INTO Products (Name, Description, Price, CategoryID, ModelURL, ThumbnailURL, Quantity)
 VALUES 
-('sofa1', 'Sofa for 2 members', 129.99, 1,
- 'https://example.com/models/headphones.glb', 'https://example.com/images/headphones.jpg', 50),
+('sofa1', 'Wood Velvet 2 seater Sofa for Living Room', 15000, 1,
+ 'https://shop3dprojectaccount.blob.core.windows.net/3d-models/Sofa1.glb',
+	'https://shop3dprojectaccount.blob.core.windows.net/images/Sofa1.png', 20),
 
-('Dining Table', 'Very comfortable dining tablw to eat with family', 199.49, 2,
- 'https://example.com/models/smartwatch.glb', 'https://example.com/images/smartwatch.jpg', 35),
+('Table', 'Cative Engineered Wood Office Table', 6000, 2,
+ 'https://shop3dprojectaccount.blob.core.windows.net/3d-models/Table.glb',
+	'https://shop3dprojectaccount.blob.core.windows.net/images/Table.png', 35),
 
-('Bed', 'King size bed', 249.99, 3,
- 'https://example.com/models/actioncamera.glb', 'https://example.com/images/actioncamera.jpg', 20),
+('Bed', 'Platform Bed with Box Storage Engineered Wood', 20000, 3,
+ 'https://shop3dprojectaccount.blob.core.windows.net/3d-models/Bed.glb', 
+	'https://shop3dprojectaccount.blob.core.windows.net/images/Bed.png', 20),
 
-('Flower vase', 'decorative flower vase.', 59.99, 4,
- 'https://example.com/models/speaker.glb', 'https://example.com/images/speaker.jpg', 75),
+('Chair', 'Garden Rocking Chair Solid Wood 1 seater', 4500, 4,
+ 'https://shop3dprojectaccount.blob.core.windows.net/3d-models/Chair.glb',
+	'https://shop3dprojectaccount.blob.core.windows.net/images/Chair.png', 50),
 
-('Sofa2', 'Sofa for 5 members', 39.99, 1,
- 'https://example.com/models/gamingmouse.glb', 'https://example.com/images/gamingmouse.jpg', 100);
+('Sofa2', 'Tokyo Curved 5 Seater Sofa', 18000, 1,
+ 'https://shop3dprojectaccount.blob.core.windows.net/3d-models/Sofa2.glb',
+	'https://shop3dprojectaccount.blob.core.windows.net/images/Sofa2.png', 10);
 
 
 CREATE TABLE Orders (
