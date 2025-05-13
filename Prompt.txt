@@ -187,3 +187,89 @@ But for now I have to implement the user stories user stories 22,23,24 using Ang
 And I dont want any complex codes for that.
 I just need the html and ts files in the level as the below html and ts code has.
 example typescript code:
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { CurewellService } from '../../curewell-services/curewell.service';
+import { Doctor } from '../../curewell-interfaces/doctor';
+import { DoctorSpecialization } from '../../curewell-interfaces/doctorspecialization';
+import { Specialization } from '../../curewell-interfaces/specialization';
+import { Surgery } from '../../curewell-interfaces/surgery';
+import { Router } from '@angular/router';
+
+@Component({
+  templateUrl: './add-doctor.component.html'
+})
+export class AddDoctorComponent implements OnInit {
+
+  doctorId: number = 0;
+  doctorName: string="";
+  status: boolean =false;
+  errorAddMsg: string ="";
+  showDiv: boolean = false;
+  msg: string = "";
+  toggleButton: boolean = true;
+
+  constructor(private _curewellService: CurewellService, private router: Router) { }
+
+  ngOnInit() {
+  }
+
+  addDoctor(doctorName: string) {
+    //To do implement necessary logic
+    this._curewellService.addDoctor(doctorName).subscribe(
+      responseData => {
+        this.status = responseData;
+        this.showDiv = true;
+        this.msg = "Doctor successfully added";
+      },
+      responseError => {
+        this.errorAddMsg = responseError;
+        this.msg = "Some error occured";
+      },
+      () => { console.log("Add doctor completed"); }
+    );
+  }
+
+}
+
+
+example html code:
+<div class="row title">
+  <h2 align="center">Add a new Doctor</h2>
+</div>
+<!--Add angular form logic here-->
+<form align="center" #addDoctorForm="ngForm" (ngSubmit)="addDoctor(doctorName.value)">
+  <table align="center">
+    <tr>
+      <th align="justify"> <label>Doctor Name</label> </th>
+      <th>
+        <!--Add angular form logic here-->
+        <input type="text" id="add_doctorName" class="form-control cwinput" name="doctorName" #doctorName="ngModel" ngModel required>
+
+         <div id="add_validate_doctorName" class="text-danger-validation">
+            <!--Add validation logic here-->
+           <div *ngIf="doctorName.errors && (doctorName.touched || doctorName.dirty)">
+             <div [hidden]="!doctorName.errors['required']">
+               <p>Name is required</p>
+             </div>
+           </div>
+
+          </div>
+      </th>
+    </tr>
+    <tr>
+      <th></th>
+      <th align="justify">
+        <button class="btn" type="submit" [disabled]="!toggleButton">Add Doctor</button>&nbsp;&nbsp;
+        <a routerLink="/class" routerLinkActive="active">Cancel</a>
+      </th>
+
+  </table>
+  <div *ngIf="showDiv" style="color:red;text-align:center;">
+    {{msg}}
+  </div>
+</form>
+
+
+
+Refer to the above code levels and design my front end application for the given user stories. I have already kept all the backend code to you in the previous chat. Check the backend file which I sent you before and design the components for me.
