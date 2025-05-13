@@ -272,4 +272,113 @@ example html code:
 
 
 
-Refer to the above code levels and design my front end application for the given user stories. I have already kept all the backend code to you in the previous chat. Check the backend file which I sent you before and design the components for me.
+Refer to the above code levels and design my front end application for the given user stories. I will paste the service files code below.
+product.service.ts file::
+import { Injectable } from "@angular/core"
+import type { HttpClient, HttpErrorResponse } from "@angular/common/http"
+import { throwError, type Observable, catchError } from "rxjs"
+import { IProduct } from "../../Shop3D-interfaces/product";
+//import type { Product } from "../models/product.model"
+//import { environment } from "../../environments/environment"
+
+@Injectable({
+  providedIn: "root",
+})
+export class ProductService {
+  //private apiUrl = `${environment.apiUrl}/api/product`
+
+  constructor(private http: HttpClient) { }
+
+  getProducts(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>('http://localhost:5236/api/Product/GetAllProducts').pipe(catchError(this.errorHandler));
+  }
+
+  getProductById(id: number): Observable<IProduct> {
+    return this.http.get<IProduct>(`http://localhost:5236/api/Product/GetProductById?id=${id}`).pipe(catchError(this.errorHandler));
+  }
+
+  getProductsByCategory(categoryId: number): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(`http://localhost:5236/api/Product/GetProductsByCategory?categoryId=${categoryId}`).pipe(catchError(this.errorHandler));
+  }
+
+  getProductsByPriceRange(minPrice: number, maxPrice: number): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(`http://localhost:5236/api/Product/GetProductsByPriceRange?minPrice=${minPrice}&maxPrice=${maxPrice}`).pipe(catchError(this.errorHandler));
+  }
+
+  getSearchProducts(item: string): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(`http://localhost:5236/api/Product/SearchProducts?searchTerm=${item}`).pipe(catchError(this.errorHandler));
+  }
+
+  addProduct(product: IProduct): Observable<IProduct> {
+    return this.http.post<IProduct>(`http://localhost:5236/api/Product/AddProduct`, product).pipe(catchError(this.errorHandler));
+  }
+
+  updateProduct(product: IProduct): Observable<IProduct> {
+    return this.http.put<IProduct>(`http://localhost:5236/api/Product/UpdateProduct`, product).pipe(catchError(this.errorHandler));
+  }
+
+  deleteProduct(id: number): Observable<void> {
+    return this.http.delete<void>(`http://localhost:5236/api/Product/DeleteProduct?id=${id}`).pipe(catchError(this.errorHandler));
+  }
+
+  getProductImages(id: number): Observable<IProduct> {
+    return this.http.get<IProduct>(`http://localhost:5236/api/Product/GetProductImages?productId=${id}`).pipe(catchError(this.errorHandler));
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    console.log(error);
+    return throwError(error.message || 'ERROR');
+  }
+}
+
+category.service.ts file ::
+//import { Injectable } from '@angular/core';
+
+//@Injectable({
+//  providedIn: 'root'
+//})
+//export class CategoryServiceService {
+
+//  constructor() { }
+//}
+
+import { Injectable } from "@angular/core"
+import { HttpClient, HttpErrorResponse } from "@angular/common/http"
+import { throwError, type Observable, catchError } from "rxjs"
+import { ICategory } from "../../Shop3D-interfaces/category"
+//import type { Category } from "../models/category.model"
+//import { environment } from "../../environments/environment"
+
+@Injectable({
+  providedIn: "root",
+})
+export class CategoryService {
+  //private apiUrl = `${environment.apiUrl}/api/category`
+
+  constructor(private http: HttpClient) { }
+
+  getCategories(): Observable<ICategory[]> {
+    return this.http.get<ICategory[]>(`http://localhost:5236/api/Category/GetAllCategories`).pipe(catchError(this.errorHandler));
+  }
+
+  //getCategoryById(id: number): Observable<Category> {
+  //  return this.http.get<Category>(`${this.apiUrl}/${id}`)
+  //}
+
+  //addCategory(category: Category): Observable<Category> {
+  //  return this.http.post<Category>(this.apiUrl, category)
+  //}
+
+  //updateCategory(category: Category): Observable<Category> {
+  //  return this.http.put<Category>(`${this.apiUrl}/${category.id}`, category)
+  //}
+
+  //deleteCategory(id: number): Observable<void> {
+  //  return this.http.delete<void>(`${this.apiUrl}/${id}`)
+  //}
+
+  errorHandler(error: HttpErrorResponse) {
+    console.log(error);
+    return throwError(error.message || 'ERROR');
+  }
+}
