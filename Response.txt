@@ -133,3 +133,180 @@ S.No	User Stories	MoSCoW	Acceptance Criteria
 38	As a Customer, I want to use a navigation bar to switch pages so that I can explore the site easily.	Must Have	- Navigation bar present with links to Home, Favourites, Cart, Profile.
 39	As a Registered Customer, I want a success message after submitting a review so that I know it was received.	Could Have	- Success toast or modal shown post-submission.
 40	As a Customer, I want to see the total number of filtered products so that I understand the result count.
+
+
+
+
+add-product.component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ProductService } from '../../Shop3D-services/product.service';
+import { IProduct } from '../../Shop3D-interfaces/product';
+
+@Component({
+  templateUrl: './add-product.component.html'
+})
+export class AddProductComponent implements OnInit {
+  msg: string = "";
+  showDiv: boolean = false;
+
+  product: IProduct = {
+    id: 0,
+    name: '',
+    description: '',
+    price: 0,
+    categoryId: 0,
+    imageUrl: ''
+  };
+
+  constructor(private _productService: ProductService) {}
+
+  ngOnInit(): void {}
+
+  addProduct(form: NgForm) {
+    this._productService.addProduct(this.product).subscribe(
+      response => {
+        this.msg = "Product successfully added!";
+        this.showDiv = true;
+        form.reset();
+      },
+      error => {
+        this.msg = "Error adding product!";
+        this.showDiv = true;
+      }
+    );
+  }
+}
+
+
+add-product.component.html
+
+<h2 align="center">Add New Product</h2>
+<form #productForm="ngForm" (ngSubmit)="addProduct(productForm)" align="center">
+  <table align="center">
+    <tr><td><label>Name:</label></td>
+        <td><input type="text" [(ngModel)]="product.name" name="name" required class="form-control"></td></tr>
+    <tr><td><label>Description:</label></td>
+        <td><input type="text" [(ngModel)]="product.description" name="description" required class="form-control"></td></tr>
+    <tr><td><label>Price:</label></td>
+        <td><input type="number" [(ngModel)]="product.price" name="price" required class="form-control"></td></tr>
+    <tr><td><label>Category ID:</label></td>
+        <td><input type="number" [(ngModel)]="product.categoryId" name="categoryId" required class="form-control"></td></tr>
+    <tr><td><label>Image URL:</label></td>
+        <td><input type="text" [(ngModel)]="product.imageUrl" name="imageUrl" class="form-control"></td></tr>
+    <tr>
+      <td colspan="2" align="center">
+        <button class="btn" type="submit">Add Product</button>
+      </td>
+    </tr>
+  </table>
+  <div *ngIf="showDiv" style="color:green; text-align:center;">{{msg}}</div>
+</form>
+
+
+update-product.component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../Shop3D-services/product.service';
+import { IProduct } from '../../Shop3D-interfaces/product';
+
+@Component({
+  templateUrl: './update-product.component.html'
+})
+export class UpdateProductComponent implements OnInit {
+  productId: number = 0;
+  product: IProduct | null = null;
+  msg: string = "";
+  showDiv: boolean = false;
+
+  constructor(private _productService: ProductService) {}
+
+  ngOnInit(): void {}
+
+  loadProduct() {
+    this._productService.getProductById(this.productId).subscribe(
+      data => this.product = data,
+      err => this.msg = "Product not found"
+    );
+  }
+
+  updateProduct() {
+    if (this.product) {
+      this._productService.updateProduct(this.product).subscribe(
+        () => {
+          this.msg = "Product updated successfully!";
+          this.showDiv = true;
+        },
+        err => this.msg = "Update failed"
+      );
+    }
+  }
+}
+
+
+update-product.component.html
+
+<h2 align="center">Update Product</h2>
+<form align="center">
+  <label>Enter Product ID:</label>
+  <input type="number" [(ngModel)]="productId" name="productId">
+  <button class="btn" type="button" (click)="loadProduct()">Load Product</button>
+</form>
+
+<div *ngIf="product">
+  <form align="center">
+    <table align="center">
+      <tr><td>Name:</td><td><input type="text" [(ngModel)]="product.name" name="name" class="form-control"></td></tr>
+      <tr><td>Description:</td><td><input type="text" [(ngModel)]="product.description" name="description" class="form-control"></td></tr>
+      <tr><td>Price:</td><td><input type="number" [(ngModel)]="product.price" name="price" class="form-control"></td></tr>
+      <tr><td>Category ID:</td><td><input type="number" [(ngModel)]="product.categoryId" name="categoryId" class="form-control"></td></tr>
+      <tr><td>Image URL:</td><td><input type="text" [(ngModel)]="product.imageUrl" name="imageUrl" class="form-control"></td></tr>
+      <tr><td colspan="2" align="center">
+        <button class="btn" type="button" (click)="updateProduct()">Update Product</button>
+      </td></tr>
+    </table>
+  </form>
+</div>
+<div *ngIf="showDiv" style="color:green; text-align:center;">{{msg}}</div>
+
+delete-product.component.ts
+
+import { Component } from '@angular/core';
+import { ProductService } from '../../Shop3D-services/product.service';
+
+@Component({
+  templateUrl: './delete-product.component.html'
+})
+export class DeleteProductComponent {
+  productId: number = 0;
+  msg: string = "";
+  showDiv: boolean = false;
+
+  constructor(private _productService: ProductService) {}
+
+  deleteProduct() {
+    this._productService.deleteProduct(this.productId).subscribe(
+      () => {
+        this.msg = "Product deleted successfully!";
+        this.showDiv = true;
+      },
+      err => {
+        this.msg = "Error deleting product";
+        this.showDiv = true;
+      }
+    );
+  }
+}
+
+
+
+delete-product.component.html
+
+<h2 align="center">Delete Product</h2>
+<form align="center">
+  <label>Enter Product ID to Delete:</label>
+  <input type="number" [(ngModel)]="productId" name="productId">
+  <button class="btn" type="button" (click)="deleteProduct()">Delete</button>
+</form>
+<div *ngIf="showDiv" style="color:red; text-align:center;">{{msg}}</div>
