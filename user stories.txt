@@ -1,0 +1,43 @@
+User Story Description
+As a Customer, I want to zoom in on product 3D model so that I can see specific features more clearly.
+As a Customer, I want to rotate product in 3D so that I can view them from different angles.
+As a Customer, I want to view products in 3D within my web browser so that I can get a better sense of their size, shape, and details.
+As a Guest User, I want to be prompted to Login when I try to save a product or when adding to cart so that I can save my favourite products or buy them if I don’t have an account.
+As a Customer, I want a loading animation while products load so that I know the app is working.
+As a Guest User, I want to access 3D product visualizations without requiring a login so that I can easily browse products.
+As a User, I want to add the products to cart so that I can place the order all at once.
+As a Customer, I want to filter products by price range so that I can find products within my budget.
+As an Admin, I want to delete unavailable products so that they don't appear to customers.
+As a Registered Customer, I want to update my account information so that I can keep my details up-to-date.
+As an Admin, I want to update product information such as quantity so that customers see accurate data.
+As a Registered Customer, I want to view my Wishlist when I click the respective button in the NavBar so that I can Buy them later.
+As an Admin, I want to add new products so that customers can view the latest items.
+As a Customer, I want to browse products by category using the filter menu so that I can find items easily.
+As a Customer, I want to search a product so that I can easily find it.
+As a Customer, I want to use a navigation bar to switch pages so that I can explore the site easily.
+As a Guest user or Customer, I want view all the products in one page, so that I can start shopping.
+As a Customer, I want a “No results found” message when no search results exist so that I am clearly informed.
+As a Registered Customer, I want to logout from my account so that I can end my session securely.
+As a User, I want to log in to my account using my credentials so that I can access the cart or wishlist.
+As a User, I want to be redirected to the login page immediately when I click the login button after successful sign up so that I can log in to my new account and start using its features.
+As a User, I want to Register for an account using my email address and personal details so that I can access exclusive features.
+As a Registered Customer, I want to save products to wishlist so that I can easily access them later.
+As a Customer, I want to remove products from my Wishlist so that I can manage my preferences.
+As a Customer, I want to rate a purchased product so that my feedback helps others.
+As a Customer, I want to recheck all details and select address in checkout page before purchase so that I can verify.
+As a Customer, I want to have a feature of maintaining multiple address so that I can switch to other address easily while ordering.
+As a Customer, I want to view my orders in orders page so that I can revise what I have purchased previously.
+As a Registered Customer, I want to leave reviews for products in orders page so that I can help others make informed decisions.
+As a Customer, I want to view an attractive home page in the beginning of the application so that I can have a cool user experience while proceeding to shop.
+As a Customer, I want to view reviews given by other customers so that I can get better insight into the product.
+As a Registered Customer, I want to update my own review description or remove my review so that I can modify my review whenever I want.
+As a Customer, I want to see the total number of filtered products so that I understand the result count.
+As a Customer, I want to use a filters button to apply multiple filters at once so that I can select all my requirements together.
+As a Customer, I want to have a clear filters button so that I can clear all the filters I have applied at one go.
+As a Customer, I want to be able to reset my password securely,So that I can change it frequently and keep my account secure.
+As a customer, I want to see the product’s dimensions image clearly displayed on the product detail page, so that I can easily understand the size of the product while viewing its picture.
+As an Customer, I want to view the discount applied for the product so that I can buy the best valued product in my price range.
+As a Customer, I want to view FAQs in product detail page so that I can find quick answers.
+As an Admin, I want to provide contact details in the section of home page so that customers can reach out directly.
+As a Customer, I want to cancel my order so that I can stop the order if I change my mind. 
+As a  logged in user, I want to download invoice as PDF files, so that I can save, print, or share them easily for my records or accounting purposes.
