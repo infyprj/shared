@@ -1,0 +1,144 @@
+Project Overview: Shop3D
+Problem Statement:
+The "Shop3D" project is designed to revolutionize online shopping by introducing interactive 3D product visualizations directly within a web browser. This solution addresses a key challenge in e-commerce: providing users with a more tangible and immersive experience of products before purchase. By integrating 3D model interaction—allowing rotation, zoom, and multi-angle views—Shop3D enhances product perception, increases customer engagement, and creates a more informative and satisfying shopping journey.
+
+The application is built using Angular (frontend) and ASP.NET Core Web API with Entity Framework Core (backend). Product data, including 3D models and details, is managed through Azure Cloud Services.
+
+Implementation Highlights
+3D Model Handling
+3D models were sourced by inserting them into Microsoft PowerPoint, saving the presentation, changing the .pptx file extension to .zip, and extracting the .glb files from the media folder.
+
+These .glb models were uploaded to Azure Blob Storage with public access enabled.
+
+Public URLs of these 3D models were then stored in the product database table and embedded in the product detail views by using Google's Model Viewer Web Component.
+
+User Interface & Feature Flow
+Customer View
+Navbar:
+
+Contains navigation links for Wishlist, Cart, Orders, and Profile.
+
+Home Page:
+
+Designed with an attractive layout and a footer that includes Help Desk contact information.
+
+Products Page:
+
+Displays products in a responsive grid format.
+
+Includes filters for price range and categories.
+
+Provides a search bar for keyword-based product search.
+
+Clicking a product leads to the Product Details page.
+
+Product Details Page:
+
+Displays comprehensive information about the selected product.
+
+Features three clickable thumbnails:
+
+Normal Image
+
+3D Model Viewer (interactive, rotatable, zoomable)
+
+Product Dimensions (height, width, length)
+
+Displays average rating using filled stars.
+
+Allows users to adjust product quantity.
+
+Includes Add to Cart and Add to Wishlist buttons.
+
+Below the product description, users can find:
+
+Customer Reviews
+
+Frequently Asked Questions (FAQs)
+
+Wishlist Page:
+
+Shows wishlist items with options to:
+
+Add to Cart
+
+Remove from Wishlist
+
+Cart Page:
+
+Left pane: Lists products with quantity controls.
+
+Actions for each item: Move to Wishlist, Remove from Cart.
+
+Right pane: Displays order summary including:
+
+Shipping charges
+
+GST
+
+Total amount
+
+A Proceed to Checkout button navigates to the checkout page.
+
+Checkout Page:
+
+Left pane: Displays user’s saved addresses with selection, edit, and delete options.
+
+Option to add a new address.
+
+Right pane: Displays final order summary and a Place Order button.
+
+Upon successful order placement, a confirmation message is shown with a View Orders button.
+
+Orders Page:
+
+Orders are displayed in individual containers.
+
+Each order shows:
+
+Shipment date
+
+Total amount
+
+Order status
+
+Shipping address
+
+Cancel Order button
+
+Each product within the order includes:
+
+Quantity purchased
+
+Unit price
+
+Authentication:
+
+Login Page and Sign-Up Page are provided for secure user access.
+
+Admin View
+Upon admin login, only one navigation option is available: Add New Product.
+
+Displays product list with Edit and Delete buttons.
+
+Admins can update or remove product details as needed.
+
+Guest View
+Guests can browse products and view product details and also 3d models.
+
+Attempting to add a product to Cart or Wishlist redirects them to the Login Prompt.
+
+Tech Stack
+Frontend: Angular, TypeScript, Bootstrap
+
+Backend: ASP.NET Core Web API
+
+Database: SQL Server using Entity Framework Core
+
+Cloud Services: Azure Blob Storage for 3D models and media assets
+2.	HIGH LEVEL DESIGN ARCHITECTURE
+This chapter should describe the high level design architecture for the proposed system.
+It is recommended to explain the design with as many diagrams as possible to bring out all interface relationship between different sub systems, layers and partitions.
+
+
+I need to fill the following in Porject Documentation.
