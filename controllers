@@ -1,0 +1,925 @@
+ADDRESS CONTROLLER
+        [HttpGet]
+        public JsonResult GetAddressesByUserId(int userId)
+        {
+            List<Address> addresses = new List<Address>();
+           
+            try
+            {
+                addresses = repository.GetAddressesByUserId(userId);
+                
+            }
+            catch (Exception)
+            {
+                addresses = null;
+            }
+            return Json(addresses);
+        }
+
+        [HttpPost]
+        public JsonResult AddNewAddress([FromBody] Address address)
+        {
+            bool result = false;
+            try
+            {
+                result = repository.AddNewAddress(address);
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+            return Json(result);
+        }
+
+        [HttpPut]
+        public JsonResult UpdateAddress([FromBody] Models.Address_ address_)
+        {
+            bool result = false;
+            Address address=new Address();
+            address.AddressId = address_.AddressId;
+            address.Name = address_.Name;
+            address.PhoneNumber = address_.PhoneNumber;
+            address.AddressLine= address_.AddressLine;
+            address.City= address_.City;
+            address.State= address_.State;
+            address.PostalCode= address_.PostalCode;
+            address.Country= address_.Country;
+            try
+            {
+                result = repository.UpdateAddress(address);
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+            return Json(result);
+        }
+
+        [HttpDelete]
+        public JsonResult RemoveAddress(int addressId)
+        {
+            bool result = false;
+            try
+            {
+                result = repository.RemoveAddress(addressId);
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+            return Json(result);
+        }
+
+
+    }
+}
+
+CART CONTROLLER 
+//using Microsoft.AspNetCore.Http;
+//using Microsoft.AspNetCore.Mvc;
+
+//namespace Infosys.Shop3D.WebServices.Controllers
+//{
+//    [Route("api/[controller]")]
+//    [ApiController]
+//    public class CartController : ControllerBase
+//    {
+//    }
+//}
+
+//using Infosys.Shop3D.DataAccessLayer.Models;
+//using Infosys.Shop3D.DataAccessLayer;
+using Infosys.Shop3D.DataAccessLayer;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+//using Infosys.Shop3D.DataAccessLayer;
+using Infosys.Shop3D.DataAccessLayer.Models;
+//using YourNamespace.Models;
+//using YourNamespace.Repository;
+
+namespace YourNamespace.Controllers
+{
+    [Route("api/[controller]/[action]")]
+    [ApiController]
+    public class CartController : Controller
+    {
+        public Shop3DRepository repository;
+        public CartController(Shop3DRepository repository)
+        {
+            this.repository = repository;
+        }
+
+        [HttpPost]
+        public JsonResult CreateCart(int userId)
+        {
+            bool status = false;
+            try
+            {
+                int result = repository.CreateCart(userId);
+                if (result > 0)
+                {
+                    status = true;
+                }
+                else
+                {
+                    status = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                status = false;
+            }
+            return Json(status);
+        }
+
+        [HttpGet]
+        public JsonResult GetCart(int userId)
+        {
+            Cart cart = null;
+            try
+            {
+                cart = repository.GetCartByUserId(userId);
+            
+            }
+            catch (Exception ex)
+            {
+                cart = null;
+            }
+            return Json(cart);
+        }
+
+        [HttpPost]
+        public JsonResult AddToCart([FromBody] CartAddRequest request)
+        {
+            bool status = false;
+            try
+            {
+                int result = repository.AddToCart(request.UserId, request.ProductId, request.Quantity);
+                if (result > 0)
+                {
+                    status = true;
+                }
+                else
+                {
+                    status = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                status = false;
+            }
+            return Json(status);
+        }
+
+        [HttpPut]
+        public JsonResult UpdateCartItemQuantity([FromBody] CartUpdateRequest request)
+        {
+            bool status = false;
+            try
+            {
+                int result = repository.UpdateCartItemQuantity(request.CartItemId, request.Quantity);
+                if (result > 0)
+                {
+                    status = true;
+                }
+                else
+                {
+                    status = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                status = false;
+            }
+            return Json(status);
+        }
+
+        [HttpDelete ]
+        public JsonResult RemoveFromCart(int cartItemId)
+        {
+            bool status = false;
+            try
+            {
+                int result = repository.RemoveFromCart(cartItemId);
+                if (result > 0)
+                {
+                    status = true;
+                }
+                else
+                {
+                    status = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                status = false;
+            }
+            return Json(status);
+        }
+
+        [HttpDelete]
+        public JsonResult ClearCart(int cartId)
+        {
+            bool status = false;
+            try
+            {
+                int result = repository.ClearCart(cartId);
+                if (result >= 0)
+                {
+                    status = true;
+                }
+                else
+                {
+                    status = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                status = false;
+            }
+            return Json(status);
+        }
+
+        [HttpGet]
+        public JsonResult GetCartItems(int userId)
+        {
+            List<CartItemDetail> cartItems=new List<CartItemDetail>();
+            try
+            {
+                cartItems = repository.GetCartItems(userId);
+                
+            }
+            catch (Exception ex)
+            {
+                cartItems = null;
+            }
+            return Json(cartItems);
+        }
+    }
+
+    // Request models
+    public class CartAddRequest
+    {
+        public int UserId { get; set; }
+        public int ProductId { get; set; }
+        public int Quantity { get; set; } = 1;
+    }
+
+    public class CartUpdateRequest
+    {
+        public int CartItemId { get; set; }
+        public int Quantity { get; set; }
+    }
+}
+
+CATEGORY CONTROLLER
+[HttpGet]
+public JsonResult GetAllCategories()
+{
+    List<Category> categories = new List<Category>();
+    try
+    {
+        categories = repository.GetAllCategories();
+    }
+    catch (Exception ex)
+    {
+        categories = null;
+    }
+    return Json(categories);
+}
+
+ORDER CONTROLLER 
+
+        public JsonResult PlaceOrder([FromBody] Models.PlaceOrderRequest request)
+        {
+            int result = -99;
+            try
+            {
+                result = repository.PlaceOrder(request.UserId, request.CartId, request.AddressId);
+            }
+            catch (Exception)
+            {
+                result = -99;
+            }
+            return Json(new { returnCode = result });
+        }
+
+        [HttpGet]
+        public JsonResult GetOrderItemsByUserId(int userId)
+        {
+            List<OrderItem> orderItems = new List<OrderItem>();
+            try
+            {
+                orderItems = repository.GetOrderItemsByUserId(userId);
+            }
+            catch (Exception)
+            {
+                orderItems = null;
+            }
+            return Json(orderItems);
+        }
+
+        [HttpGet]
+        public JsonResult GetOrderDetailsByUserId(int userId)
+        {
+            List<Order> orders = new List<Order>();
+            try
+            {
+                orders = repository.GetOrderDetailsByUserId(userId);
+            }
+            catch (Exception)
+            {
+                orders = null;
+            }
+            return Json(orders);
+        }
+
+        [HttpPost]
+        public JsonResult CancelOrder(int orderId)
+        {
+            int result = -99;
+            try
+            {
+                result = repository.CancelOrder(orderId);
+            }
+            catch (Exception)
+            {
+                result = -99;
+            }
+            return Json(new { returnCode = result });
+        }
+
+
+    }
+}
+
+PRODUCT CONTROLLER 
+
+using Infosys.Shop3D.DataAccessLayer;
+using Infosys.Shop3D.DataAccessLayer.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Infosys.Shop3D.Services.Controllers
+{
+    [Route("api/[controller]/[action]")]
+    [ApiController]
+    public class ProductController : Controller
+    {
+        public Shop3DRepository repository;
+
+        public ProductController(Shop3DRepository repository)
+        {
+            this.repository = repository;
+        }
+
+        [HttpGet]
+        public JsonResult GetAllProducts()
+        {
+            List<Product> products = new List<Product>();
+            try
+            {
+                products = repository.GetAllProducts();
+            }
+            catch (Exception )
+            {
+                products = null;
+            }
+            return Json(products);
+        }
+
+        [HttpGet]
+        public JsonResult GetProductById(int id)
+        {
+            Console.WriteLine("Get Product BY ID controller is called");
+            Product product = null;
+            try
+            {
+                product = repository.GetProductById(id);
+                Console.WriteLine("Product :");
+                Console.WriteLine(product);
+            }
+            catch (Exception ex)
+            {
+                product = null;
+            }
+            return Json(product);
+        }
+
+        [HttpGet]
+        public JsonResult GetProductsByCategory(int categoryId)
+        {
+            List<Product> products = new List<Product>();
+            try
+            {
+                products = repository.GetProductsByCategory(categoryId);
+            }
+            catch (Exception ex)
+            {
+                products = null;
+            }
+            return Json(products);
+        }
+
+        [HttpGet]
+        public JsonResult GetProductsByPriceRange(decimal minPrice, decimal maxPrice)
+        {
+            List<Product> products = new List<Product>();
+            try
+            {
+                products = repository.GetProductsByPriceRange(minPrice, maxPrice);
+            }
+            catch (Exception ex)
+            {
+                products = null;
+            }
+            return Json(products);
+        }
+
+        [HttpGet]
+        public JsonResult GetProductsCount(int? categoryId = null, decimal? minPrice = null, decimal? maxPrice = null)
+        {
+            int count = 0;
+            try
+            {
+                count = repository.GetProductsCount(categoryId, minPrice, maxPrice);
+            }
+            catch (Exception ex)
+            {
+                count = 0;
+            }
+            return Json(count);
+        }
+
+        [HttpGet]
+        public JsonResult SearchProducts(string searchTerm)
+        {
+            List<Product> products = new List<Product>();
+            try
+            {
+                products = repository.SearchProducts(searchTerm);
+            }
+            catch (Exception ex)
+            {
+                products = null;
+            }
+            return Json(products);
+        }
+
+        [HttpPost]
+        public JsonResult AddProduct([FromBody] Product product)
+        {
+            bool status;
+            try
+            {
+                status = repository.AddProduct(product);
+            }
+            catch (Exception ex)
+            {
+                status = false;
+            }
+            return Json(status);
+        }
+
+        [HttpPut]
+        public JsonResult UpdateProduct([FromBody] Product product)
+        {
+            bool status = false;
+            try
+            {
+                status = repository.UpdateProduct(product);
+            }
+            catch (Exception ex)
+            {
+                status = false;
+            }
+            return Json(status);
+        }
+
+        [HttpDelete]
+        public JsonResult DeleteProduct(int id)
+        {
+            bool status = false;
+            try
+            {
+                status = repository.DeleteProduct(id);
+            }
+            catch (Exception ex)
+            {
+                status = false;
+            }
+            return Json(status);
+        }
+
+        [HttpGet]
+        public JsonResult GetProductImages(int productId)
+        {
+            List<ProductImage> images = new List<ProductImage>();
+            try
+            {
+                images = repository.GetProductImages(productId);
+            }
+            catch (Exception ex)
+            {
+                images = null;
+            }
+            return Json(images);
+        }
+
+        [HttpGet]
+        public JsonResult GetProductStock(int productId)
+        {
+            int stock = 0;
+            try
+            {
+                stock = repository.GetProductStock(productId);
+            }
+            catch (Exception)
+            {
+                stock = 0;
+            }
+            return Json(stock);
+        }
+
+        [HttpPost]
+        //[Authorize(Roles = "Admin")]
+        public JsonResult SetProductDiscount(int productId, decimal discountPercentage)
+        {
+            try
+            {
+                // Call DAL/repository method
+                int finalPrice = repository.SetProductDiscount(productId, discountPercentage);
+
+                if (finalPrice == -1)
+                {
+                    return Json(new
+                    {
+                        Success = false,
+                        Message = "Failed to apply discount. Product not found or invalid input."
+                    });
+                }
+
+                return Json(new
+                {
+                    Success = true,
+                    Message = $"Discount of {discountPercentage}% applied successfully.",
+                    FinalPrice = finalPrice
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message); // Optional: log to a file or monitoring tool
+
+                return Json(new
+                {
+                    Success = false,
+                    Message = "An error occurred while applying the discount.",
+                    Error = ex.Message
+                });
+            }
+        }
+
+
+    }
+}
+
+RATING CONTROLLER
+
+        [HttpPost]
+        public JsonResult AddRating([FromBody] Models.RatingRequest request)
+        {
+            bool result = false;
+            try
+            {
+                result = repository.AddRating(request.UserId, request.ProductId, request.Rating);
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+            return Json(result);
+        }
+
+
+        [HttpGet]
+        public JsonResult GetAvgRating(int productId)
+        {
+            try
+            {
+                var (averageRating, totalUsers) = repository.GetAvgRating(productId);
+
+                var result = new
+                {
+                    ProductId = productId,
+                    AverageRating = averageRating,
+                    TotalUsers = totalUsers
+                };
+
+                return Json(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return Json(new { ProductId = productId, AverageRating = 0.0, TotalUsers = 0 });
+            }
+        }
+
+    }
+}
+
+REVIEW CONTROLLER
+
+[HttpGet]
+public JsonResult GetReviews(int productId)
+{
+    List<ReviewClass> reviews = new List<ReviewClass>();
+    try
+    {
+        reviews = repository.GetReviewsByProduct(productId);
+    }
+    catch (Exception ex)
+    {
+        reviews = null;
+    }
+    return Json(reviews);
+}
+
+[HttpPost]
+public JsonResult AddReview([FromBody] ReviewModel model)
+{
+    bool status = false;
+    try
+    {
+        status = repository.AddReview(model.UserID, model.ProductID, model.Description);
+    }
+    catch (Exception ex)
+    {
+        status = false;
+    }
+    return Json(status);
+}
+
+[HttpPut]
+public JsonResult UpdateVisibility([FromBody] VisibilityModel model)
+{
+    bool status = false;
+    try
+    {
+        status = repository.UpdateReviewVisibility(model.ReviewID, model.UserID, model.IsVisible);
+    }
+    catch (Exception ex)
+    {
+        status = false;
+    }
+    return Json(status);
+}
+
+[HttpPut]
+public JsonResult UpdateDescription([FromBody] UpdateDescriptionModel model)
+{
+    bool status = false;
+    try
+    {
+        status = repository.UpdateReviewDescription(model.ReviewID, model.UserID, model.Description);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+        status = false;
+    }
+    return Json(status);
+}
+
+SAVEDPRODUCT CONTROLLER 
+
+using Infosys.Shop3D.DataAccessLayer.Models;
+using Infosys.Shop3D.DataAccessLayer;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Infosys.Shop3D.WebServices.Controllers
+{
+    [Route("api/[controller]/[action]")]
+    [ApiController]
+    public class SavedProductController : Controller
+    {
+        public Shop3DRepository repository;
+        public SavedProductController(Shop3DRepository repository)
+        {
+            this.repository = repository;
+        }
+
+        [HttpGet]
+        public JsonResult GetSavedProducts(int userId)
+        {
+            List<Product> products = new List<Product>();
+            try
+            {
+                products = repository.GetSavedProducts(userId);
+            }
+            catch (Exception ex)
+            {
+                products = null;
+            }
+            return Json(products);
+        }
+
+        [HttpPost]
+        public JsonResult SaveProduct([FromBody] SaveProductModel model)
+        {
+            bool status = false;
+            try
+            {
+                status = repository.SaveProduct(model.UserId, model.ProductId);
+            }
+            catch (Exception ex)
+            {
+                status = false;
+            }
+            return Json(status);
+        }
+
+        [HttpDelete]
+        public JsonResult RemoveSavedProduct([FromBody] SaveProductModel model)
+        {
+            int result = 0;
+            try
+            {
+                result = repository.RemoveSavedProduct(model.UserId, model.ProductId);
+            }
+            catch (Exception ex)
+            {
+                result = -1;
+            }
+            return Json(result);
+        }
+    }
+
+    // Helper model for save/remove product operations
+    public class SaveProductModel
+    {
+        public int UserId { get; set; }
+        public int ProductId { get; set; }
+    }
+}
+
+USER CONTROLLER 
+
+using Infosys.Shop3D.DataAccessLayer;
+using Infosys.Shop3D.DataAccessLayer.Models;
+using Infosys.Shop3D.WebServices.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.Data;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Infosys.Shop3D.WebServices.Controllers
+{
+    [Route("api/[controller]/[action]")]
+    [ApiController]
+    public class UserController : Controller
+    {
+        public Shop3DRepository repository;
+
+        public UserController(Shop3DRepository repository)
+        {
+            this.repository = repository;
+        }
+
+        [HttpPost]
+        public JsonResult RegisterUser([FromBody] User user)
+        {
+            User newUser = null;
+            try
+            {
+                newUser = repository.RegisterUser(
+                    user.Email,
+                    user.PasswordHash,
+                    user.FirstName,
+                    user.LastName,
+                    user.PhoneNumber,
+                    user.Address,
+                    user.City,
+                    user.State,
+                    user.PostalCode,
+                    user.Country,
+                    user.RoleId
+                );
+            }
+            catch (Exception )
+            {
+                newUser = null;
+            }
+            return Json(newUser != null );
+        }
+
+
+        [HttpGet]
+        public JsonResult GetUserProfile(int userId)
+        {
+            User user = new User();
+            try
+            {
+                user = repository.getUserProfile(userId);
+            }
+            catch (Exception)
+            {
+                user = null;
+            }
+            return Json(user);
+        }
+
+
+        [HttpPost]
+        public JsonResult AuthenticateUser([FromBody] LoginModel model)
+        {
+            User user = null;
+            LoginUser loginUser=new LoginUser();
+            try
+            {
+                user = repository.AuthenticateUser(model.Email, model.Password);
+                loginUser.UserId = user.UserId;
+                loginUser.RoleId=user.RoleId;
+            }
+            catch (Exception)
+            {
+                loginUser = null;
+            }
+            
+            if(loginUser == null)
+            {
+                
+            return Json(new { User = loginUser, Success = false });
+            }
+            else
+            {
+                return Json(new { User = loginUser, Success = true });
+            }
+              
+        }
+
+
+        [HttpPut]
+        public JsonResult UpdateUserDetails([FromBody] Models.Users user)
+        {
+            bool status = false;
+            try
+            {
+                User updateUser=new User();
+                updateUser.FirstName= user.FirstName;
+                updateUser.LastName= user.LastName;
+                updateUser.PhoneNumber= user.PhoneNumber;
+                updateUser.Address= user.Address;   
+                updateUser.City= user.City;
+                updateUser.State= user.State;
+                updateUser.PostalCode= user.PostalCode;
+                updateUser.Country= user.Country;
+                updateUser.UserId= user.UserId;
+
+                status = repository.UpdateUserDetails(updateUser);
+            }
+            catch (Exception)
+            {
+                status = false;
+            }
+            return Json(status);
+        }
+
+        [HttpPut]
+        public JsonResult ResetUserPassword([FromBody] ResetPasswordRequest request)
+        {
+            bool status = false;
+
+            try
+            {
+                status = repository.ResetUserPassword(
+                    request.Email,
+                    request.OldPassword,        
+                    request.NewPassword,
+                    request.ConfirmPassword
+                );
+            }
+            catch (Exception)
+            {
+                status = false;
+            }
+
+            return Json(status);
+        }
+        public class LoginModel
+        {
+            public string Email { get; set; }
+            public string Password { get; set; }
+        }
+
+        public class ResetPasswordRequest
+        {
+            public string Email { get; set; }
+            public string OldPassword { get; set; }        
+            public string NewPassword { get; set; }
+            public string ConfirmPassword { get; set; }
+        }
+    }
+}
+
