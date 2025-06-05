@@ -1,0 +1,63 @@
+The following is the problem statement of the project called "Shop3D" :
+"This project aims to enhance online shopping by providing interactive 3D product visualizations directly within a web browser. 
+The project will develop a web application using Angular that allows users to explore products in 3D, rotate them, zoom in on details, and view them from different angles. 
+This innovative approach will improve product perception, enhance customer engagement, and provide a more informative online shopping experience. 
+Data, including 3D models and product information, can be stored and managed using Azure cloud services."
+
+The following description shows on how we achieved the project :
+To get the 3d Models : Insert 3d models in power point and save it, change the .pptx extension to .zip and extract it and get the .glb file from media folder
+Store the .glb 3d models in storage account and give public access and copy, paste the links in product table.
+ Pages and their description :
+
+Customer View Pages 
+Navbar contains wishlist, cart ,orders and profile nav items.
+Home Page :
+Created an attractive home page and provided help desk contact details at footer of homepage.
+
+Products Page:
+There is a navbar in each page.
+Products are displayed in grid format 
+And Filter option is there to filder the products based on the price rage and categories.
+And also search the products based on the search terms.
+When the product is clicked it goes to the product details page.
+
+Product Details Page :
+Detailed information of the product is displayed.
+3 thumbnails are present like normal image, 3d model thumbnail, dimensions thumbnail.
+When the 3d model is clicked , 3d model is displayed and can be rotated and zoomed .
+When dimensions thumbnail is clicked, it shows the dimension values like height, width and length.
+In product details section , average rating is displayed with filled stars. A qunatity update button is present to increase and decrease the quaniytity. 
+When Add to cart button is clicked, it is added to cart.
+When Add to Wishlist button is clicked, it is added to wishlist.
+Below product details there are customer reviews and then FAQs
+
+
+Wishlist Page:
+Products are displayed with Add to cart and remove from wishlist buttons.
+
+Cart Page :
+At left side products are displayed with qunatity update buttons .
+Move to Wishlist and Remove from cart buttons are also present for each product.
+At right side , order summary is displayed like shipping charges, gst and total amount.
+Below it "Proceed to Checkout" is present, when it is clicked it goes to checkout page.
+
+Checkout page :
+At left side addresses are displayed . One address can be selected from them.
+Add new address button is to add new address for the user.
+Edit Address and Delete Address buttons are also present for each address.
+At right side , order summary is dislayed and belwo it "Place Order" button is present.
+When it is cliked the order is placed and it shows successful message with view orders button when it is cliked it goes to orders page.
+
+
+Orders Page:
+Each order is displayed in each container with header and product items in that particular order. 
+Order header contains shipped date, total amount, order status and shipped address and cancel button.
+Each product in order is displayed with purchased quantity and unit price.
+
+Login Page 
+
+Sign Up Page
+
+Admin View 
+When the admin logged in there is only Add New Product nav item 
+And Products are displayed with edit and delete buttons. When the buttons are clicked he can update or delete the product.
