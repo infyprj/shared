@@ -61,3 +61,12 @@ Sign Up Page
 Admin View 
 When the admin logged in there is only Add New Product nav item 
 And Products are displayed with edit and delete buttons. When the buttons are clicked he can update or delete the product.
+
+
+
+Guest View 
+He can view the products and can see product details.
+But when he clicks Add to Cart or Add to wishlist button it goes to the Login Prompt.
+
+
+We developed the whole project using EF core and ASP .net core web api for backend and  Angular with typescript and bootstrap for frontend.
